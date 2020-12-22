@@ -25,7 +25,7 @@ end
 function V=L(U)
     N = 100;           
     Delta = 1/(N-1);
-    V=zeros(N,N);       %開一個2維空間
+    V=zeros(N,N);       %開一個空的2維空間
     
    %L(u)=[a(ii-1,jj)-4b(ii,jj)+c(ii+1,jj)+d(ii,jj-1)+e(ii,jj+1)]
     for ii=1:N 
