@@ -1,5 +1,5 @@
 clear;clc;
-N = 100;                 %矩陣的大小
+N = 100;                 %固定值
 Delta = 1/(N+1);         %分出100個點/99段
 
 %u = [0;ones(N*N-2,1);2];
@@ -7,7 +7,7 @@ u = rand(N*N,1);         %隨機的2維矩陣
 
 ite1 = 0;                %進行的次數
 tol = 10^(-9);           %誤差值
-a = 0;                   %lambda的初始值
+a = 1;                   %lambda的初始值
 L = sparse(N*N,N*N);      %開一個10000*10000的全零矩陣
 
 %把function變成矩陣
@@ -29,6 +29,7 @@ for ii = 1:N*N
 
 L = L/(Delta*Delta);
 
+%算最大的eigenvalue
 while 1
     ite1 = ite1 + 1;       %計算運作的次數
     u = u/norm(u);         %u的長度是1
@@ -42,8 +43,11 @@ while 1
 end
 maxlambda = abs(lambda)
 
-a = 0;
+a = 1;
 ite2 = 0;
+u = rand(N*N,1);
+
+%算最小值的eigenvalue
 while 1
     ite2 = ite2 + 1;       %計算運作的次數
     u = u/norm(u);         %讓u的長度是1
